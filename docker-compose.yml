@@ -1,0 +1,13 @@
+services:
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: server-telegram-bot
+    volumes:
+      - ./config.json:/app/config.json:ro
+    ports:
+      - "2505:8080" # Map ports if needed
+    environment:
+      - DOTNET_RUNNING_IN_CONTAINER=true
+    restart: always
